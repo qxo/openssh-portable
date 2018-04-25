@@ -1,0 +1,7 @@
+FROM alpine
+
+ARG alpine_mirror=
+
+RUN if [ -n "${alpine_mirror}" ] ; then sed -i "s#dl-cdn.alpinelinux.org#${alpine_mirror}#g"  /etc/apk/repositories ; fi  && \
+  apk update && apk add zlib-dev autoconf make gcc musl-dev openssl-dev texinfo linux-pam-dev git 
+
